@@ -2,7 +2,7 @@ package controller;
 
 import java.awt.EventQueue;
 
-import myProject.Login;
+import view.Login;
 
 public class Main {
 

@@ -1,9 +1,12 @@
-package myProject;
+package view;
 
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.UserController;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,16 +22,26 @@ public class Login extends JFrame {
 	private JTextField txtEmail;
 	private JTextField txtSenha;
 
-	
-
 	/**
 	 * Create the frame.
 	 */
 	public Login() {
+		
+		UserController userController = new UserController();
+		
+		// define que a janela 
 		setResizable(false);
+		
+		// define o titulo da tela
 		setTitle("Login");
+		
+		// possibilita o usuario fechar a janela
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// define o tamanho da janela
 		setBounds(100, 100, 450, 300);
+		
+		// cria o panel principal
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 235, 205));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -41,35 +54,42 @@ public class Login extends JFrame {
 		contentPane.add(mainPanel);
 		mainPanel.setLayout(null);
 		
+		// label do email
 		JLabel lblEmail = new JLabel("Email");
 		lblEmail.setFont(new Font("Mongolian Baiti", Font.PLAIN, 16));
 		lblEmail.setBounds(10, 11, 86, 51);
 		mainPanel.add(lblEmail);
 		
+		// texto do email
 		txtEmail = new JTextField();
 		txtEmail.setBounds(10, 53, 254, 20);
 		mainPanel.add(txtEmail);
 		txtEmail.setColumns(10);
 		
-		txtSenha = new JTextField();
-		txtSenha.setColumns(10);
-		txtSenha.setBounds(10, 131, 254, 20);
-		mainPanel.add(txtSenha);
-		
+		// label da senha
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Mongolian Baiti", Font.PLAIN, 16));
 		lblSenha.setBounds(10, 84, 86, 51);
 		mainPanel.add(lblSenha);
 		
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.addActionListener(new ActionListener() {
+		// texto da senha
+		txtSenha = new JTextField();
+		txtSenha.setColumns(10);
+		txtSenha.setBounds(10, 131, 254, 20);
+		mainPanel.add(txtSenha);
+		
+		// botao de login
+		JButton btnLogin = new JButton("Entrar");
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
-		btnEntrar.setFont(new Font("Mongolian Baiti", Font.PLAIN, 13));
-		btnEntrar.setBounds(10, 178, 89, 23);
-		mainPanel.add(btnEntrar);
+		btnLogin.setFont(new Font("Mongolian Baiti", Font.PLAIN, 13));
+		btnLogin.setBounds(10, 178, 89, 23);
+		mainPanel.add(btnLogin);
 		
+		// botao de cadastro
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.setFont(new Font("Mongolian Baiti", Font.PLAIN, 13));
 		btnCadastrar.addActionListener(new ActionListener() {
