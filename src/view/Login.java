@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 import controller.UserController;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -40,6 +41,7 @@ public class Login extends JFrame {
 		
 		// define o tamanho da janela
 		setBounds(100, 100, 450, 300);
+		setLayout(new BorderLayout());
 		
 		// cria o panel principal
 		contentPane = new JPanel();
@@ -51,7 +53,7 @@ public class Login extends JFrame {
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBounds(53, 18, 326, 224);
-		contentPane.add(mainPanel);
+		contentPane.add(mainPanel, BorderLayout.CENTER);
 		mainPanel.setLayout(null);
 		
 		// label do email
