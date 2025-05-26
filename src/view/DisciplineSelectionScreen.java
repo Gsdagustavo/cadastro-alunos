@@ -1,6 +1,9 @@
 package view;
 
+import view.Login;
+
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -40,7 +43,7 @@ public class DisciplineSelectionScreen extends JFrame {
         JComboBox<Discipline> cbDisciplinas = new JComboBox<>(disciplines.toArray(new Discipline[0]));
         cbDisciplinas.setToolTipText("Selecionar Disciplina");
         cbDisciplinas.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        cbDisciplinas.setBounds(103, 41, 225, 26);
+        cbDisciplinas.setBounds(98, 75, 225, 26);
         contentPane.add(cbDisciplinas);
         
         JButton btnAbrirTabelaAlunos = new JButton("Abrir Tabela de Alunos");
@@ -54,7 +57,18 @@ public class DisciplineSelectionScreen extends JFrame {
                 }
         	}
         });
-        btnAbrirTabelaAlunos.setBounds(132, 168, 153, 23);
+        btnAbrirTabelaAlunos.setBounds(136, 200, 153, 23);
         contentPane.add(btnAbrirTabelaAlunos);
+        
+        JButton btnVoltar = new JButton("Voltar para a tela de login");
+        btnVoltar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Login login = new Login();
+        		login.setVisible(true);
+        		dispose();
+        	}
+        });
+        btnVoltar.setBounds(10, 11, 218, 23);
+        contentPane.add(btnVoltar);
     }
 }

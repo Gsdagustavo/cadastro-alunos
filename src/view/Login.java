@@ -78,6 +78,11 @@ public class Login extends JFrame {
                 try {
                     User loggedUser = userController.login(email, password);
                     JOptionPane.showMessageDialog(Login.this, "Bem-vindo, " + loggedUser.getEmail());
+                    
+                    DisciplineSelectionScreen disciplineSelectionScreen = new DisciplineSelectionScreen();
+                    disciplineSelectionScreen.setVisible(true);
+                    
+                    dispose();
                     // Aqui pode abrir a próxima tela do sistema
                 } catch (LoginException ex) {
                     JOptionPane.showMessageDialog(Login.this, ex.getMessage(), "Erro no Login", JOptionPane.ERROR_MESSAGE);
