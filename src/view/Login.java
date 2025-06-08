@@ -24,95 +24,98 @@ import javax.swing.UIManager;
 
 public class Login extends JFrame {
 
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
-    private JTextField txtEmail;
-    private JPasswordField pfSenha;
-    private UserController userController;
-    
-    private DisciplinesController disciplinesController;
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField txtEmail;
+	private JPasswordField pfSenha;
+	private UserController userController;
 
-    public Login() {
+	private DisciplinesController disciplinesController;
 
-        userController = new UserController();
-        disciplinesController = new DisciplinesController();
+	public Login() {
 
-        setResizable(false);
-        setTitle("Login");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
-        getContentPane().setLayout(new BorderLayout());
+		userController = new UserController();
+		disciplinesController = new DisciplinesController();
 
-        contentPane = new JPanel();
-        contentPane.setBackground(new Color(192, 192, 192));
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setResizable(false);
+		setTitle("Login");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(new BorderLayout());
 
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(192, 192, 192));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setBounds(53, 18, 326, 224);
-        contentPane.add(mainPanel, BorderLayout.CENTER);
-        mainPanel.setLayout(null);
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
-        JLabel lblEmail = new JLabel("Email");
-        lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        lblEmail.setBounds(130, 11, 86, 51);
-        mainPanel.add(lblEmail);
+		JPanel mainPanel = new JPanel();
+		mainPanel.setBounds(53, 18, 326, 224);
+		contentPane.add(mainPanel, BorderLayout.CENTER);
+		mainPanel.setLayout(null);
 
-        txtEmail = new JTextField();
-        txtEmail.setBounds(29, 53, 254, 20);
-        mainPanel.add(txtEmail);
-        txtEmail.setColumns(10);
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEmail.setBounds(130, 11, 86, 51);
+		mainPanel.add(lblEmail);
 
-        JLabel lblSenha = new JLabel("Senha");
-        lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-        lblSenha.setBounds(130, 84, 86, 51);
-        mainPanel.add(lblSenha);
+		txtEmail = new JTextField();
+		txtEmail.setBounds(29, 53, 254, 20);
+		mainPanel.add(txtEmail);
+		txtEmail.setColumns(10);
 
-        pfSenha = new JPasswordField();
-        pfSenha.setBounds(29, 134, 254, 20);
-        mainPanel.add(pfSenha);
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSenha.setBounds(130, 84, 86, 51);
+		mainPanel.add(lblSenha);
 
-        JButton btnLogin = new JButton("Entrar");
-        btnLogin.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String email = txtEmail.getText();
-                String password = new String(pfSenha.getPassword());
+		pfSenha = new JPasswordField();
+		pfSenha.setBounds(29, 134, 254, 20);
+		mainPanel.add(pfSenha);
 
-                try {
-                    User loggedUser = userController.login(email, password);
-                    JOptionPane.showMessageDialog(Login.this, "Bem-vindo, " + loggedUser.getEmail());
-                    
-                    DisciplineSelectionScreen disciplineSelectionScreen = new DisciplineSelectionScreen(disciplinesController);
-                    disciplineSelectionScreen.setVisible(true);
-                    
-                    dispose();
-                } catch (LoginException ex) {
-                    JOptionPane.showMessageDialog(Login.this, ex.getMessage(), "Erro no Login", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        btnLogin.setBounds(10, 178, 130, 23);
-        mainPanel.add(btnLogin);
+		JButton btnLogin = new JButton("Entrar");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String email = txtEmail.getText();
+				String password = new String(pfSenha.getPassword());
 
-        JButton btnCadastrar = new JButton("Cadastrar");
-        btnCadastrar.setFont(UIManager.getFont("TabbedPane.font"));
-        btnCadastrar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String email = txtEmail.getText();
-                String password = new String(pfSenha.getPassword());
+				try {
+					User loggedUser = userController.login(email, password);
+					JOptionPane.showMessageDialog(Login.this, "Bem-vindo, " + loggedUser.getEmail());
 
-                try {
-                    userController.signIn(email, password);
-                    JOptionPane.showMessageDialog(Login.this, "Usuário cadastrado com sucesso!");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(Login.this, ex.getMessage(), "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        btnCadastrar.setBounds(186, 178, 130, 23);
-        mainPanel.add(btnCadastrar);
-    }
+					DisciplineSelectionScreen disciplineSelectionScreen = new DisciplineSelectionScreen(
+							disciplinesController);
+					disciplineSelectionScreen.setVisible(true);
+
+					dispose();
+				} catch (LoginException ex) {
+					JOptionPane.showMessageDialog(Login.this, ex.getMessage(), "Erro no Login",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnLogin.setBounds(10, 178, 130, 23);
+		mainPanel.add(btnLogin);
+
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String email = txtEmail.getText();
+				String password = new String(pfSenha.getPassword());
+
+				try {
+					userController.signIn(email, password);
+					JOptionPane.showMessageDialog(Login.this, "Usuário cadastrado com sucesso!");
+				} catch (Exception ex) {
+					JOptionPane.showMessageDialog(Login.this, ex.getMessage(), "Erro ao cadastrar",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		btnCadastrar.setBounds(186, 178, 130, 23);
+		mainPanel.add(btnCadastrar);
+	}
 }

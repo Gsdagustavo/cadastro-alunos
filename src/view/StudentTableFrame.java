@@ -17,7 +17,7 @@ public class StudentTableFrame extends JFrame {
 	private DefaultTableModel tableModel;
 	private Discipline discipline;
 	private DisciplinesController disciplinesController;
-	
+
 	public StudentTableFrame(Discipline discipline, DisciplinesController disciplinesController) {
 		this.discipline = discipline;
 		this.disciplinesController = disciplinesController;
@@ -46,16 +46,17 @@ public class StudentTableFrame extends JFrame {
 		btnPanel.add(btnEditar);
 		btnPanel.add(btnRemover);
 		getContentPane().add(btnPanel, BorderLayout.SOUTH);
-		
-				JButton btnVoltar = new JButton("Voltar");
-				btnVoltar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						DisciplineSelectionScreen disciplineSelectionScreen = new DisciplineSelectionScreen(disciplinesController);
-						disciplineSelectionScreen.setVisible(true);
-						dispose();
-					}
-				});
-				btnPanel.add(btnVoltar);
+
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DisciplineSelectionScreen disciplineSelectionScreen = new DisciplineSelectionScreen(
+						disciplinesController);
+				disciplineSelectionScreen.setVisible(true);
+				dispose();
+			}
+		});
+		btnPanel.add(btnVoltar);
 	}
 
 	private void loadStudents() {
@@ -88,7 +89,7 @@ public class StudentTableFrame extends JFrame {
 				}
 
 				Student novoAluno = new Student(nome, n1, n2, n3);
-				discipline.getStudents().add(novoAluno);
+				discipline.addStudent(novoAluno);
 
 				double media = (n1 + n2 + n3) / 3.0;
 				tableModel.addRow(new Object[] { nome, n1, n2, n3, String.format("%.2f", media) });
